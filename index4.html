@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&amp;display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        :root {
+            --Soft-orange: hsl(35, 77%, 62%);
+            --Soft-red: hsl(5, 85%, 63%);
+            --Off-white: hsl(36, 100%, 99%);
+            --Grayish-blue: hsl(233, 8%, 79%);
+            --Dark-grayish-blue: hsl(236, 13%, 42%);
+            --Very-dark-blue: hsl(240, 100%, 5%);
+        }
+
+        /* DEFAULT STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif, 'Inter';
+}
+.logo {
+    height: 100px; /* Modifica la altura del logo según tu preferencia */
+    width: auto; /* Permite que el ancho se ajuste automáticamente */
+    margin-top: -20px; /* Ajusta el valor negativo para mover el logo hacia arriba */
+}
+
+.logo {
+    height: 150px; /* Modifica la altura del logo según tu preferencia */
+    width: auto; /* Permite que el ancho se ajuste automáticamente */
+}
+
+/* ... (otros estilos) ... */
+
+/* Oculta el botón de menú */
+.hidden {
+    display: none;
+}
+
+.hidden {
+    opacity: 0; /* Oculta el logo al establecer la opacidad en 0 */
+    transition: opacity 0.5s ease; /* Agrega una transición suave para el efecto de desaparición y aparición */
+}
+
+.distorted {
+    transform: scale(1.2); /* Puedes ajustar el valor de escala según la distorsión deseada */
+    transition: transform 0.3s ease; /* Agrega una transición suave para que el efecto sea gradual */
+}
+
+
+/* Agrega un z-index superior al menú cuando está activo */
+.mobile-menu.active {
+    z-index: 1000;
+}
+
+/* Oculta el logo cuando el menú está activo */
+.hide-logo {
+    visibility: hidden;
+}
+
+.logo {
+    margin-left: -15px; /* Ajusta la cantidad de desplazamiento hacia la izquierda según sea necesario */
+}
+
+.logo {
+    position: relative; /* Añade posición relativa al logo */
+    z-index: 1; /* Asegura que el logo tenga un índice Z más alto para aparecer encima */
+}
+
+.menu {
+    position: absolute; /* Añade posición absoluta al botón del menú */
+    top: 10px; /* Ajusta la posición vertical del botón del menú */
+    right: 10px; /* Ajusta la posición horizontal del botón del menú */
+    z-index: 2; /* Asegura que el botón del menú esté por encima del logo */
+}
+
+.menu {
+    width: 30px; /* Cambia el valor según sea necesario para reducir el tamaño horizontal */
+    height: auto; /* Esto mantendrá la proporción de la imagen */
+}
+
+
+.logo {
+    width: 355px; /* Cambia el valor según sea necesario para hacer la imagen más delgada */
+    height: 1055; /* Esto mantiene la proporción de la imagen */
+}
+
+
+        body {
+            min-height: 100vh;
+            background: var(--Off-white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        p {
+            font-size: 15px;
+        }
+
+        li {
+            list-style: none;
+            cursor: pointer;
+        }
+
+        .menu {
+            display: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(4, auto);
+            gap: 30px;
+            grid-template-areas: "nav nav nav" "main main new" "main main new" "top-new top-new top-new";
+        }
+
+        .inactive {
+            display: none;
+        }
+
+        .backdrop {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 35%;
+            backdrop-filter: brightness(40%);
+        }
+
+        /* NAV STYLES */
+        nav {
+            grid-area: nav;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links li {
+            color: var(--Dark-grayish-blue);
+        }
+
+        .nav-links li:hover {
+            color: var(--Soft-red);
+        }
+
+        /* MAIN STYLES */
+        main {
+            grid-area: main;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background: var(--Off-white);
+        }
+
+        main picture {
+            height: 60%;
+        }
+
+        .image-web {
+            width: 100%;
+            height: 100%;
+        }
+
+        .main-container {
+            height: 40%;
+            display: flex;
+            gap: 30px;
+        }
+
+        .main-title {
+            font-weight: 800;
+            font-size: 45px;
+            line-height: 1;
+            color: var(--Very-dark-blue);
+            width: 50%;
+        }
+
+        .main-info {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .main-text {
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--Dark-grayish-blue);
+        }
+
+        .btn {
+            border-style: none;
+            color: var(--Off-white);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 11px;
+            font-weight: 700;
+            padding: auto 10px;
+            background: var(--Soft-red);
+            width: 50%;
+            height: 25%;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--Very-dark-blue);
+        }
+
+        /* NEWS STYLES*/
+        .news {
+            grid-area: new;
+            background: var(--Very-dark-blue);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 100%;
+            height: 100%;
+            padding: 30px 20px;
+        }
+
+        .news h2 {
+            font-size: 2rem;
+            color: var(--Soft-orange);
+        }
+
+        .new {
+            padding: 2rem 0;
+        }
+
+        .new:nth-child(3) {
+            border-top: 1px solid var(--Off-white);
+            border-bottom: 1px solid var(--Off-white);
+        }
+
+        .new:nth-child(4) {
+            padding-bottom: 0;
+        }
+
+        .new-title {
+            font-size: 1rem;
+            color: var(--Off-white);
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .new-title:hover {
+            color: var(--Soft-orange);
+        }
+
+        .new-text {
+            font-weight: 400;
+            color: var(--Grayish-blue);
+        }
+
+        /* TOP NEW STYLE */
+        .top-news {
+            grid-area: top-new;
+            display: flex;
+            width: 100%;
+            gap: 30px;
+        }
+
+        .top-new {
+            display: flex;
+            width: 33.33%;
+            align-items: center;
+            margin: 0;
+        }
+
+        .top-image {
+            height: 100px;
+            width: 40%;
+            object-fit: cover;
+        }
+
+        .top-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-left: 20px;
+            gap: 6px;
+        }
+
+        .top-number {
+            color: var(--Grayish-blue);
+            font-weight: 700;
+            font-size: 30px;
+        }
+
+        .top-title {
+            color: var(--Very-dark-blue);
+            font-weight: 800;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .top-title:hover {
+            color: var(--Soft-red);
+        }
+
+        .top-text {
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--Dark-grayish-blue);
+        }
+
+        /* MOBILE MENU STYLES */
+        .mobile-menu {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 65%;
+            height: 100%;
+            background: var(--Off-white);
+            padding: 2rem 1.5rem;
+            animation-duration: 0.5s;
+            animation-name: slideIn;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .mobile-menu-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4rem;
+        }
+
+        .mobile-menu-container ul {
+            align-self: flex-start;
+        }
+
+        .mobile-menu-container ul li {
+            font-weight: 400;
+            font-size: 17px;
+            color: var(--Dark-grayish-blue);
+            margin: 25px 0;
+        }
+
+        @media (max-width: 800px) {
+            .nav-links {
+                display: none;
+            }
+
+            .menu {
+                display: block;
+            }
+
+            .container,
+            .main-container {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .main-title,
+            .main-info {
+                width: 100%;
+                gap: 30px
+            }
+
+            .btn {
+                padding: 14px 20px;
+                margin-bottom: 30px;
+            }
+
+            .top-news {
+                flex-direction: column;
+                margin-top: 30px;
+            }
+
+            .top-image {
+                height: 110px;
+            }
+
+            .top-new {
+                width: 100%;
+            }
+        }
+
+        @media (min-width: 801px) {
+            .backdrop,
+            .mobile-menu {
+                display: none;
+            }
+        }
+
+         /* Ajustes adicionales */
+        /* Cambiar el título */
+        title {
+            font-size: 24px;
+            color: #000;
+            font-weight: bold;
+        }
+
+        /* Cambiar el texto del botón */
+        .btn {
+            /* ... (tus estilos de botón) ... */
+            text-decoration: none; /* Agregado para prevenir el subrayado */
+            display: flex; /* Agregado para ajustar el tamaño del botón */
+            align-items: center; /* Agregado para centrar el contenido verticalmente */
+            justify-content: center; /* Agregado para centrar el contenido horizontalmente */
+        }
+    </style>
+
+    <title>CRÓNICAS RELATOS Y LEYENDAS de Atoyac, Veracruz</title>
+
+</head>
+
+<body>
+    <body>
+    <!-- Contenedor principal -->
+    <div class="container">
+        <!-- Barra de navegación -->
+        <nav>
+            <img class="logo" src="logo.jpg" alt="logo">
+            <ul class="nav-links">
+                <li>Inicio</li>
+                <li>Nuevas</li>
+                <li>Populares</li>
+                <li>Tendencias</li>
+                <li>Categorías</li>
+            </ul>
+            <img class="menu hidden" src="icon-menu.jpg" alt="menu">
+
+       </nav>
+
+        <!-- Contenido principal -->
+        <main>
+            <picture>
+                <source media="(max-width:800px)" srcset="image-web-3-mobile.jpg">
+                <img class="image-web" src="image-web-3-desktop.jpg">
+            </picture>
+            <div class="main-container">
+             
+        <!-- Título principal y contenido destacado -->
+        <h1 class="main-title">CRÓNICAS RELATOS Y LEYENDAS de Atoyac, Veracruz</h1>
+        <div class="main-info">
+            <p class="main-text">Recopilación hecha por  Nazario Guadalupe Cebada </p>
+            <!-- Botón modificado para descargar el archivo "Plan de san Ricardo.pdf" -->
+            <a href="Plan_de_san_Ricardo.pdf" download="Plan_de_san_Ricardo.pdf" class="btn">Descargar</a>
+        </div>
+        </main>
+
+        <!-- Sección de noticias -->
+        <aside class="news">
+            <h2>Nuevas</h2>
+            <!-- Noticias recientes -->
+            <div class="new">
+                <h3 class="new-title">Próximamente</h3>
+                <p class="new-text">Próximamente</p>
+            </div>
+            <div class="new">
+                <h3 class="new-title">Próximamente</h3>
+                <p class="new-text">Próximamente</p>
+            </div>
+            <div class="new">
+                <h3 class="new-title">Próximamente</h3>
+                <p class="new-text">Próximamente</p>
+            </div>
+        </aside>
+
+        <!-- Noticias destacadas -->
+        <aside class="top-news">
+            <div class="top-new">
+                <img class="top-image" src="image-retro-pcs.jpg" alt="">
+                <div class="top-info">
+                    <h2 class="top-number">01</h2>
+                    <h3 class="top-title">Próximamente</h3>
+                    <p class="top-text">Próximamente...</p>
+                </div>
+            </div>
+            <div class="top-new">
+                <img class="top-image" src="image-top-laptops.jpg" alt="">
+                <div class="top-info">
+                    <h2 class="top-number">02</h2>
+                    <h3 class="top-title">Próximamente...</h3>
+                    <p class="top-text">Próximo lanzamiento</p>
+                </div>
+            </div>
+            <div class="top-new">
+                <img class="top-image" src="image-gaming-growth.jpg" alt="">
+                <div class="top-info">
+                    <h2 class="top-number">03</h2>
+                    <h3 class="top-title">Desarrollador web</h3>
+                    <p class="top-text">Marck Zucaritas Qaker trabajo en estre proyecto en colaboración con Crónicas Relatos y leyendas de atoyac Veracruz </p>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Elementos adicionales -->
+    <div class="backdrop inactive"></div>
+    <div class="mobile-menu inactive">
+        <div class="mobile-menu-container">
+            <figure>
+                <img class="close" src="icon-menu-close.svg" alt="">
+            </figure>
+            <ul>
+                <li>Inicio</li>
+                <li>Nuevas</li>
+                <li>Populares</li>
+                <li>Tendencias</li>
+                <li>Categorías</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Archivo de scripts -->
+    <script src="main.js"></script>
+</body>
+
+</body>
+
+</html>
