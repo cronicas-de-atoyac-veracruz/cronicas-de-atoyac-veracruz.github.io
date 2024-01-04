@@ -14,6 +14,18 @@
     <link rel="stylesheet" href="assets/css/style.css">
 
     <style>
+
+/* Estilos para el enlace */
+.top-title a {
+    color: var(--Very-dark-blue);
+    text-decoration: none;
+    transition: color 0.3s ease; /* Transición de color */
+}
+
+.top-title a:hover {
+    color: var(--Soft-red); /* Cambio de color al pasar el puntero */
+}
+
         :root {
             --Soft-orange: hsl(35, 77%, 62%);
             --Soft-red: hsl(5, 85%, 63%);
@@ -490,7 +502,7 @@
         <!-- Noticias destacadas -->
         <aside class="top-news">
             <div class="top-new">
-                <img class="top-image" src="image-retro-pcs.jpg" alt="">
+                <img class="top-image" src="image-top-laptops.jpg" alt="">
                 <div class="top-info">
                     <h2 class="top-number">01</h2>
                     <h3 class="top-title">Próximamente</h3>
@@ -498,21 +510,26 @@
                 </div>
             </div>
             <div class="top-new">
-                <img class="top-image" src="image-top-laptops.jpg" alt="">
+                <img class="top-image" src="image-retro-pcs.jpg" alt="">
                 <div class="top-info">
                     <h2 class="top-number">02</h2>
                     <h3 class="top-title">Próximamente...</h3>
                     <p class="top-text">Próximo lanzamiento</p>
                 </div>
             </div>
-            <div class="top-new">
-                <img class="top-image" src="image-gaming-growth.jpg" alt="">
-                <div class="top-info">
-                    <h2 class="top-number">03</h2>
-                    <h3 class="top-title">Desarrollador web</h3>
-                    <p class="top-text">Marck Zucaritas Qaker trabajo en estre proyecto en colaboración con Crónicas Relatos y leyendas de atoyac Veracruz </p>
-                </div>
-            </div>
+            <!-- Dentro del bloque .top-new -->
+<div class="top-new">
+    <img class="top-image" src="image-gaming-growth.jpg" alt="">
+    <div class="top-info">
+        <h3 class="top-title">
+            <a href="https://www.facebook.com/MarckZucaritasQaker?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer">
+                Desarrollador web
+            </a>
+        </h3>
+        <p class="top-text">
+            Marck Zucaritas Qaker trabajó en este proyecto en colaboración con Crónicas, Relatos y Leyendas de Atoyac Veracruz
+        </p>
+    </div>
         </aside>
     </div>
 
@@ -538,4 +555,4 @@
 
 </body>
 
-</html>
+    </html>
