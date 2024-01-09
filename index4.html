@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -14,6 +15,35 @@
     <link rel="stylesheet" href="assets/css/style.css">
 
     <style>
+/* Estilos para el enlace */
+.top-title a {
+    color: var(--Very-dark-blue);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Eliminar subrayado en el hover */
+.top-title a:hover {
+    color: var(--Soft-red);
+    text-decoration: none;
+    background: linear-gradient(to right, navy, goldenrod, darkorange);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background 0.3s ease;
+}
+
+/* Eliminar subrayado en todos los estados */
+.top-title a {
+    text-decoration: none !important;
+}
+
+
+/* Ajusta el tamaño de la imagen */
+.bigger-image {
+    width: 200px; /* Cambia este valor para ajustar el ancho */
+    height: auto; /* Esto mantiene la proporción de la imagen */
+}
+
 .top-title a:hover {
     background: linear-gradient(to right, navy, goldenrod, darkorange); /* Degradado de azul oscuro a amarillo y luego a naranja oscuro */
     -webkit-background-clip: text; /* Aplica el degradado al texto */
@@ -516,13 +546,16 @@
                     <p class="top-text">Próximamente...</p>
                 </div>
             </div>
-            <div class="top-new">
-                <img class="top-image" src="image-retro-pcs.jpg" alt="">
-                <div class="top-info">
-                    <h2 class="top-number">02</h2>
-                    <h3 class="top-title">Próximamente...</h3>
-                    <p class="top-text">Próximo lanzamiento</p>
-                </div>
+<div style="width: 140%; height: 100px;">
+    <a href="https://www.youtube.com/watch?v=qqo8eTjtT0g&si=5IRION-lAArnfMzi" target="_blank" rel="noopener noreferrer" class="top-new" style="display: flex; align-items: center;">
+        <img class="top-image" src="image-retro-pcs.jpg" alt="" style="width: 30%; height: 100%;">
+        <div class="top-info" style="width: 70%;">
+            <h2 class="top-number">02</h2>
+            <h3 class="top-title">Primera zafra</h3>
+            <p class="top-text">La canción narra el surgimiento del Ingenio El Potrero en 1908 y su Progreso </p>
+        </div>
+    </a>
+
             </div>
             <!-- Dentro del bloque .top-new -->
 <div class="top-new">
@@ -562,4 +595,4 @@
 
 </body>
 
-    </html>
+                </html>
